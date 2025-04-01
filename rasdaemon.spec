@@ -7,7 +7,7 @@
 #
 Name     : rasdaemon
 Version  : 0.8.3
-Release  : 1
+Release  : 2
 URL      : https://github.com/mchehab/rasdaemon/archive/refs/tags/v0.8.3.tar.gz
 Source0  : https://github.com/mchehab/rasdaemon/archive/refs/tags/v0.8.3.tar.gz
 Summary  : No detailed summary available
@@ -74,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1743524865
+export SOURCE_DATE_EPOCH=1743525082
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -90,7 +90,14 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
-%reconfigure --disable-static
+%reconfigure --disable-static --enable-sqlite3 \
+--enable-aer \
+--enable-mce \
+--enable-extlog \
+--enable-devlink \
+--enable-diskerror \
+--enable-memory-failure \
+--enable-cpu-fault-isolation
 make  %{?_smp_mflags}
 
 %check
@@ -115,7 +122,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1743524865
+export SOURCE_DATE_EPOCH=1743525082
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rasdaemon
 cp %{_builddir}/rasdaemon-%{version}/COPYING %{buildroot}/usr/share/package-licenses/rasdaemon/62681cf0443adb29fe101c7a4993deda818b2c40 || :

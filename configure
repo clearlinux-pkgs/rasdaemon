@@ -1,0 +1,8 @@
+--enable-sqlite3 
+--enable-aer
+--enable-mce 
+--enable-extlog 
+--enable-devlink 
+--enable-diskerror
+--enable-memory-failure
+--enable-cpu-fault-isolation 
