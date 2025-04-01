@@ -7,7 +7,7 @@
 #
 Name     : rasdaemon
 Version  : 0.8.3
-Release  : 2
+Release  : 3
 URL      : https://github.com/mchehab/rasdaemon/archive/refs/tags/v0.8.3.tar.gz
 Source0  : https://github.com/mchehab/rasdaemon/archive/refs/tags/v0.8.3.tar.gz
 Summary  : No detailed summary available
@@ -74,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1743525082
+export SOURCE_DATE_EPOCH=1743525874
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -122,13 +122,15 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1743525082
+export SOURCE_DATE_EPOCH=1743525874
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rasdaemon
 cp %{_builddir}/rasdaemon-%{version}/COPYING %{buildroot}/usr/share/package-licenses/rasdaemon/62681cf0443adb29fe101c7a4993deda818b2c40 || :
 export GOAMD64=v2
 GOAMD64=v2
 %make_install
+## Remove excluded files
+rm -f %{buildroot}*/usr/include/config.h
 
 %files
 %defattr(-,root,root,-)
@@ -141,7 +143,6 @@ GOAMD64=v2
 %files dev
 %defattr(-,root,root,-)
 /usr/include/bitfield.h
-/usr/include/config.h
 /usr/include/non-standard-ampere.h
 /usr/include/non-standard-hisilicon.h
 /usr/include/non-standard-jaguarmicro.h

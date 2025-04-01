@@ -9,4 +9,5 @@ mem_fail_trigger
 ras
 rasdaemon
 sysconfig
+sysconfig' ']'
 triggers
