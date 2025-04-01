@@ -1,0 +1,12 @@
+/etc/:
+/etc/ras/dimm_labels.d:
+/etc/ras/triggers:
+/etc/ras:
+/etc/sysconfig:
+dimm_labels.d
+mc_event_trigger
+mem_fail_trigger
+ras
+rasdaemon
+sysconfig
+triggers
